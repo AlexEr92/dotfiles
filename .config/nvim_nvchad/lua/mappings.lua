@@ -44,8 +44,8 @@ end,
 
 -- Git
 map("n", "<leader>gs", "<cmd>:tab Git<CR>", { desc = "Git status" })
-map("n", "[h", "<cmd>Gitsign prev_hunk<CR>", { desc = "Previous hunk" })
-map("n", "]h", "<cmd>Gitsign next_hunk<CR>", { desc = "Next hunk" })
+map("n", "[c", "<cmd>Gitsign prev_hunk<CR>", { desc = "Previous hunk" })
+map("n", "]c", "<cmd>Gitsign next_hunk<CR>", { desc = "Next hunk" })
 map("n", "<leader>hp", "<cmd>Gitsign preview_hunk<CR>", { desc = "Preview hunk" })
 map("n", "<leader>hr", "<cmd>Gitsign reset_hunk<CR>", { desc = "Reset hunk" })
 
