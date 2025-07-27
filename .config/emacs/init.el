@@ -45,6 +45,7 @@
   '(avy
     diminish
     magit
+    rg
     which-key
     )
   )
@@ -71,6 +72,11 @@
 (use-package magit
   :bind (("C-x g" . magit-status)
          ("C-x M-g" . magit-dispatch)))
+
+;; ripgrep
+(use-package rg
+  :config
+  (rg-enable-default-bindings))
 
 ;; which-key
 (use-package which-key
