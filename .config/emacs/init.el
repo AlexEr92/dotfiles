@@ -43,7 +43,9 @@
 ;; Packages to install via package-install-selected-packages
 (setq package-selected-packages
   '(avy
+    diminish
     magit
+    which-key
     )
   )
 
@@ -69,3 +71,8 @@
 (use-package magit
   :bind (("C-x g" . magit-status)
          ("C-x M-g" . magit-dispatch)))
+
+;; which-key
+(use-package which-key
+  :diminish which-key-mode
+  :hook (after-init . which-key-mode))
