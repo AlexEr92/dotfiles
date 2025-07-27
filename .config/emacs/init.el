@@ -42,7 +42,10 @@
 
 ;; Packages to install via package-install-selected-packages
 (setq package-selected-packages
-  '(avy))
+  '(avy
+    magit
+    )
+  )
 
 (package-install-selected-packages t)
 
@@ -62,3 +65,7 @@
 (use-package avy
   :bind ("C-;" . avy-goto-char))
 
+;; magit
+(use-package magit
+  :bind (("C-x g" . magit-status)
+         ("C-x M-g" . magit-dispatch)))
