@@ -40,6 +40,12 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
+;; Packages to install via package-install-selected-packages
+(setq package-selected-packages
+  '(avy))
+
+(package-install-selected-packages t)
+
 ;; === GDB Settings ===
 
 ;; GDB User Interface Layout
@@ -51,4 +57,8 @@
 (use-package basic-edit-toolkit
   :ensure nil
   :load-path "~/.config/emacs/elisp")
+
+;; avy
+(use-package avy
+  :bind ("C-;" . avy-goto-char))
 
