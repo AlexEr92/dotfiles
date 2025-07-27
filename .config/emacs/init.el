@@ -26,6 +26,20 @@
 ;; Highlight brackets
 (show-paren-mode t)
 
+;; === MELPA Package Support ===
+
+;; Enables basic packaging support
+(require 'package)
+
+;; Adds the Melpa archive to the list of available repositories
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+;; Initializes the package infrastructure
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
 ;; === GDB Settings ===
 
 ;; GDB User Interface Layout
