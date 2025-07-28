@@ -43,7 +43,10 @@
 ;; Packages to install via package-install-selected-packages
 (setq package-selected-packages
   '(avy
+    company
     diminish
+    lsp-mode
+    lsp-ui
     magit
     rg
     which-key
@@ -82,3 +85,38 @@
 (use-package which-key
   :diminish which-key-mode
   :hook (after-init . which-key-mode))
+
+;; ==== LSP ====
+
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l"
+        lsp-enable-on-type-formatting nil
+        lsp-enable-indentation t
+        lsp-enable-relative-indentation t)
+  :hook
+  ((c-mode . lsp)
+  (c++-mode . lsp)
+  (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+
+(use-package lsp-ui
+  :after lsp-mode
+  :hook
+  (lsp-mode . lsp-ui-mode)
+  :init
+  (setq lsp-ui-doc-position 'at-point
+        lsp-ui-doc-show-with-mouse nil)
+  :bind
+  (("C-c d" . lsp-ui-doc-show)
+   ("C-c i" . lsp-ui-imenu)))
+
+(use-package company
+  :bind
+  (:map company-active-map
+   ("C-n" . company-select-next)
+   ("C-p" . company-select-previous)
+   ("<tab>" . company-complete-common-or-cycle)
+   :map company-search-map
+   ("C-p" . company-select-previous)
+   ("C-n" . company-select-next)))
