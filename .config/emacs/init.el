@@ -106,10 +106,27 @@
   (lsp-mode . lsp-ui-mode)
   :init
   (setq lsp-ui-doc-position 'at-point
-        lsp-ui-doc-show-with-mouse nil)
+        lsp-ui-doc-show-with-mouse nil
+        lsp-ui-doc-show-with-cursor nil)
   :bind
   (("C-c d" . lsp-ui-doc-show)
-   ("C-c i" . lsp-ui-imenu)))
+   ("C-c i" . lsp-ui-imenu))
+  :config
+  ;; Create custom variable to store position
+  (defvar-local my/lsp-ui-doc--last-pos nil
+                      "Last position where documentation was shown.")
+  ;; Update position when showing documentation
+  (advice-add 'lsp-ui-doc-show :after
+    (lambda (&rest _)
+      (setq my/lsp-ui-doc--last-pos (point))))
+  ;; Function to hide doc when cursor move
+  (defun my/lsp-ui-doc-close-on-move ()
+    (when (and my/lsp-ui-doc--last-pos
+            (not (equal (point) my/lsp-ui-doc--last-pos))
+      (lsp-ui-doc-hide)
+      (setq my/lsp-ui-doc--last-pos nil))))
+  ;; Add tracking hook
+  (add-hook 'post-command-hook #'my/lsp-ui-doc-close-on-move))
 
 (use-package company
   :bind
