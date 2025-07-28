@@ -45,6 +45,7 @@
   '(avy
     company
     diminish
+    git-gutter
     lsp-mode
     lsp-ui
     magit
@@ -71,10 +72,17 @@
 (use-package avy
   :bind ("C-;" . avy-goto-char))
 
-;; magit
+;; ==== Git ====
+
 (use-package magit
   :bind (("C-x g" . magit-status)
          ("C-x M-g" . magit-dispatch)))
+
+(use-package git-gutter
+  :diminish git-gutter-mode
+  :hook (prog-mode . git-gutter-mode)
+  :config
+  (setq git-gutter:update-interval 0.02))
 
 ;; ripgrep
 (use-package rg
