@@ -44,8 +44,25 @@ end,
 
 -- Git
 map("n", "<leader>gs", "<cmd>:tab Git<CR>", { desc = "Git status" })
-map("n", "[c", "<cmd>Gitsign prev_hunk<CR>", { desc = "Previous hunk" })
-map("n", "]c", "<cmd>Gitsign next_hunk<CR>", { desc = "Next hunk" })
+
+map("n", "[c", function()
+  local gs = require("gitsigns")
+  if vim.wo.diff then
+    vim.cmd.normal({'[c', bang = true})
+  else
+    gs.nav_hunk("prev")
+  end
+end, { desc = "Previous hunk" })
+
+map("n", "]c", function()
+  local gs = require("gitsigns")
+  if vim.wo.diff then
+    vim.cmd.normal({']c', bang = true})
+  else
+    gs.nav_hunk("next")
+  end
+end, { desc = "Next hunk" })
+
 map("n", "<leader>hp", "<cmd>Gitsign preview_hunk<CR>", { desc = "Preview hunk" })
 map("n", "<leader>hr", "<cmd>Gitsign reset_hunk<CR>", { desc = "Reset hunk" })
 
