@@ -26,6 +26,9 @@
 ;; Highlight brackets
 (show-paren-mode t)
 
+;; Start every frame maximized
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; === MELPA Package Support ===
 
 ;; Enables basic packaging support
