@@ -29,6 +29,12 @@
 ;; Start every frame maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+;; Font settings
+(set-face-attribute 'default nil
+  :family "Fira Code Retina"
+  :height 120
+  :weight 'normal)
+
 ;; === MELPA Package Support ===
 
 ;; Enables basic packaging support
