@@ -35,6 +35,11 @@
   :height 120
   :weight 'normal)
 
+;; Disable toolbar, menubar, scrollbar
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+
 ;; === MELPA Package Support ===
 
 ;; Enables basic packaging support
