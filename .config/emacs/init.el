@@ -48,6 +48,7 @@
   '(avy
     company
     diminish
+    doom-modeline
     doom-themes
     git-gutter
     lsp-mode
@@ -78,6 +79,10 @@
 (use-package doom-themes
   :config
   (load-theme 'doom-one))
+
+;; Modeline
+(use-package doom-modeline
+  :hook (after-init . doom-modeline-mode))
 
 ;; avy
 (use-package avy
