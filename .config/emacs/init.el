@@ -53,6 +53,7 @@
     lsp-ui
     magit
     rg
+    tree-sitter
     which-key
     )
   )
@@ -106,8 +107,8 @@
         lsp-enable-indentation t
         lsp-enable-relative-indentation t)
   :hook
-  ((c-mode . lsp)
-  (c++-mode . lsp)
+  ((c-ts-mode . lsp)
+  (c++-ts-mode . lsp)
   (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
@@ -148,3 +149,23 @@
    :map company-search-map
    ("C-p" . company-select-previous)
    ("C-n" . company-select-next)))
+
+;; ==== Treesitter ====
+
+(setq treesit-extra-load-path '("~/.config/emacs/tree-sitter"))
+
+(setq treesit-language-source-alist
+  '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+    (cmake "https://github.com/uyha/tree-sitter-cmake")
+    (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
+    (python "https://github.com/tree-sitter/tree-sitter-python")
+    (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+    (c "https://github.com/tree-sitter/tree-sitter-c")))
+
+(setq major-mode-remap-alist
+  '((bash-mode . bash-ts-mode)
+    (c-mode . c-ts-mode)
+    (cpp-mode . cpp-ts-mode)
+    (python-mode . python-ts-mode)))
+
+(global-tree-sitter-mode)
