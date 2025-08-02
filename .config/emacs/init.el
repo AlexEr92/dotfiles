@@ -53,6 +53,7 @@
     lsp-ui
     magit
     rg
+    rust-mode
     tree-sitter
     which-key
     )
@@ -108,8 +109,9 @@
         lsp-enable-relative-indentation t)
   :hook
   ((c-ts-mode . lsp)
-  (c++-ts-mode . lsp)
-  (lsp-mode . lsp-enable-which-key-integration))
+   (c++-ts-mode . lsp)
+   (rust-ts-mode . lsp)
+   (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
 (use-package lsp-ui
@@ -159,6 +161,7 @@
     (cmake "https://github.com/uyha/tree-sitter-cmake")
     (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
     (python "https://github.com/tree-sitter/tree-sitter-python")
+    (rust "https://github.com/tree-sitter/tree-sitter-rust" "v0.23.3")
     (elisp "https://github.com/Wilfred/tree-sitter-elisp")
     (c "https://github.com/tree-sitter/tree-sitter-c")))
 
@@ -166,6 +169,7 @@
   '((bash-mode . bash-ts-mode)
     (c-mode . c-ts-mode)
     (cpp-mode . cpp-ts-mode)
+    (rust-mode . rust-ts-mode)
     (python-mode . python-ts-mode)))
 
 (global-tree-sitter-mode)
