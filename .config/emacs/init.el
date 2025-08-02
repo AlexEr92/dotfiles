@@ -48,6 +48,7 @@
   '(avy
     company
     diminish
+    doom-themes
     git-gutter
     lsp-mode
     lsp-ui
@@ -72,6 +73,11 @@
 (use-package basic-edit-toolkit
   :ensure nil
   :load-path "~/.config/emacs/elisp")
+
+;; Colorscheme
+(use-package doom-themes
+  :config
+  (load-theme 'doom-one))
 
 ;; avy
 (use-package avy
