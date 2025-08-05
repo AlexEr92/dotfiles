@@ -62,8 +62,6 @@
     doom-modeline
     doom-themes
     git-gutter
-    lsp-mode
-    lsp-ui
     magit
     rg
     rust-mode
@@ -122,48 +120,26 @@
 
 ;; ==== LSP ====
 
-(use-package lsp-mode
-  :init
-  (setq lsp-keymap-prefix "C-c l"
-        lsp-enable-on-type-formatting nil
-        lsp-enable-indentation t
-        lsp-enable-relative-indentation t)
+(use-package eglot
+  :ensure nil
+  :bind (:map eglot-mode-map
+              ("<f6>" . eglot-format-buffer)
+              ("C-c a" . eglot-code-action))
   :hook
-  ((c-ts-mode . lsp)
-   (c++-ts-mode . lsp)
-   (rust-ts-mode . lsp)
-   (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
-
-(use-package lsp-ui
-  :after lsp-mode
-  :hook
-  (lsp-mode . lsp-ui-mode)
-  :init
-  (setq lsp-ui-doc-position 'at-point
-        lsp-ui-doc-show-with-mouse nil
-        lsp-ui-doc-show-with-cursor nil)
-  :bind
-  (("C-c d" . lsp-ui-doc-show)
-   ("C-c i" . lsp-ui-imenu))
+  ((rust-ts-mode . eglot-ensure)
+   (c-ts-mode . eglot-ensure)
+   (cpp-ts-mode . eglot-ensure)
+   )
   :config
-  ;; Create custom variable to store position
-  (defvar-local my/lsp-ui-doc--last-pos nil
-                      "Last position where documentation was shown.")
-  ;; Update position when showing documentation
-  (advice-add 'lsp-ui-doc-show :after
-    (lambda (&rest _)
-      (setq my/lsp-ui-doc--last-pos (point))))
-  ;; Function to hide doc when cursor move
-  (defun my/lsp-ui-doc-close-on-move ()
-    (when (and my/lsp-ui-doc--last-pos
-            (not (equal (point) my/lsp-ui-doc--last-pos))
-      (lsp-ui-doc-hide)
-      (setq my/lsp-ui-doc--last-pos nil))))
-  ;; Add tracking hook
-  (add-hook 'post-command-hook #'my/lsp-ui-doc-close-on-move))
+  (add-to-list 'eglot-server-programs
+               '(rust-ts-mode . ("rust-analyzer")))
+  (add-to-list 'eglot-server-programs
+               '(cpp-ts-mode . ("clangd" "--clang-tidy")))
+  (add-to-list 'eglot-server-programs
+               '(c-ts-mode . ("clangd" "--clang-tidy"))))
 
 (use-package company
+  :hook ((prog-mode . company-mode))
   :bind
   (:map company-active-map
    ("C-n" . company-select-next)
@@ -171,7 +147,10 @@
    ("<tab>" . company-complete-common-or-cycle)
    :map company-search-map
    ("C-p" . company-select-previous)
-   ("C-n" . company-select-next)))
+   ("C-n" . company-select-next))
+  :config
+  (setq company-idle-delay 0.1)
+  (setq company-minimum-prefix-length 2))
 
 ;; ==== Treesitter ====
 
