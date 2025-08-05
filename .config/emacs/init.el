@@ -67,7 +67,6 @@
     magit
     rg
     rust-mode
-    tree-sitter
     which-key
     )
   )
@@ -176,22 +175,22 @@
 
 ;; ==== Treesitter ====
 
-(setq treesit-extra-load-path '("~/.config/emacs/tree-sitter"))
+(use-package treesit
+  :init
+  (setq treesit-extra-load-path '("~/.config/emacs/tree-sitter"))
+  (setq treesit-language-source-alist
+    '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+	  (cmake "https://github.com/uyha/tree-sitter-cmake")
+	  (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
+	  (python "https://github.com/tree-sitter/tree-sitter-python")
+	  (rust "https://github.com/tree-sitter/tree-sitter-rust")
+	  (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+	  (c "https://github.com/tree-sitter/tree-sitter-c")))
+  :config
+  (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(c-or-c++-mode . c-or-c++-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
 
-(setq treesit-language-source-alist
-  '((bash "https://github.com/tree-sitter/tree-sitter-bash")
-    (cmake "https://github.com/uyha/tree-sitter-cmake")
-    (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
-    (python "https://github.com/tree-sitter/tree-sitter-python")
-    (rust "https://github.com/tree-sitter/tree-sitter-rust" "v0.23.3")
-    (elisp "https://github.com/Wilfred/tree-sitter-elisp")
-    (c "https://github.com/tree-sitter/tree-sitter-c")))
-
-(setq major-mode-remap-alist
-  '((bash-mode . bash-ts-mode)
-    (c-mode . c-ts-mode)
-    (cpp-mode . cpp-ts-mode)
-    (rust-mode . rust-ts-mode)
-    (python-mode . python-ts-mode)))
-
-(global-tree-sitter-mode)
