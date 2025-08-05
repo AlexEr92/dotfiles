@@ -58,6 +58,7 @@
 (setq package-selected-packages
   '(avy
     company
+    company-box
     diminish
     doom-modeline
     doom-themes
@@ -151,6 +152,9 @@
   :config
   (setq company-idle-delay 0.1)
   (setq company-minimum-prefix-length 2))
+
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 ;; ==== Treesitter ====
 
