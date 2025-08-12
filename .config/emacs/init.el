@@ -64,6 +64,7 @@
     doom-themes
     git-gutter
     magit
+    org-modern
     rg
     rust-mode
     which-key
@@ -188,3 +189,9 @@
   (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
 
+;; Org-mode
+
+(use-package org-modern
+  :hook (org-mode . org-modern-mode)
+  :config
+  (setq org-modern-star 'replace))
