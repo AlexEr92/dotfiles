@@ -127,8 +127,9 @@
 (use-package eglot
   :ensure nil
   :bind (:map eglot-mode-map
-              ("<f6>" . eglot-format-buffer)
-              ("C-c a" . eglot-code-action))
+              ("C-c l r" . eglot-rename)
+              ("C-c l f" . eglot-format)
+              ("C-c l a" . eglot-code-actions))
   :hook
   ((rust-ts-mode . eglot-ensure)
    (c-ts-mode . eglot-ensure)
