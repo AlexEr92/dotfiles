@@ -152,6 +152,7 @@
   (corfu-auto t)
   (corfu-cycle t)
   (corfu-auto-prefix 2)
+  (corfu-auto-delay 0.8)
   (corfu-max-width 60)
   (corfu-popupinfo-mode t))
 
