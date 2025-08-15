@@ -57,6 +57,7 @@
 ;; Packages to install via package-install-selected-packages
 (setq package-selected-packages
   '(avy
+    cargo
     company
     company-box
     diminish
@@ -189,6 +190,12 @@
   (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
   (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
+
+;; Rust
+
+(use-package cargo
+  :hook
+  (rust-ts-mode . cargo-minor-mode))
 
 ;; Org-mode
 
