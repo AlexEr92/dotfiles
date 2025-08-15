@@ -134,13 +134,13 @@
   :hook
   ((rust-ts-mode . eglot-ensure)
    (c-ts-mode . eglot-ensure)
-   (cpp-ts-mode . eglot-ensure)
+   (c++-ts-mode . eglot-ensure)
    )
   :config
   (add-to-list 'eglot-server-programs
                '(rust-ts-mode . ("rust-analyzer")))
   (add-to-list 'eglot-server-programs
-               '(cpp-ts-mode . ("clangd" "--clang-tidy")))
+               '(c++-ts-mode . ("clangd" "--clang-tidy")))
   (add-to-list 'eglot-server-programs
                '(c-ts-mode . ("clangd" "--clang-tidy"))))
 
