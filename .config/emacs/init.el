@@ -154,7 +154,10 @@
   (corfu-auto-prefix 2)
   (corfu-auto-delay 0.8)
   (corfu-max-width 60)
-  (corfu-popupinfo-mode t))
+  (corfu-popupinfo-mode t)
+  :bind (:map corfu-map
+         ("M-n" . corfu-popupinfo-scroll-up)
+         ("M-p" . corfu-popupinfo-scroll-down)))
 
 ;; Snippets
 
