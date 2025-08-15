@@ -144,22 +144,16 @@
   (add-to-list 'eglot-server-programs
                '(c-ts-mode . ("clangd" "--clang-tidy"))))
 
-(use-package company
-  :hook ((prog-mode . company-mode))
-  :bind
-  (:map company-active-map
-   ("C-n" . company-select-next)
-   ("C-p" . company-select-previous)
-   ("<tab>" . company-complete-common-or-cycle)
-   :map company-search-map
-   ("C-p" . company-select-previous)
-   ("C-n" . company-select-next))
-  :config
-  (setq company-idle-delay 0.1)
-  (setq company-minimum-prefix-length 2))
+;; Autocomplete
 
-(use-package company-box
-  :hook (company-mode . company-box-mode))
+(use-package corfu
+  :hook ((prog-mode . corfu-mode))
+  :custom
+  (corfu-auto t)
+  (corfu-cycle t)
+  (corfu-auto-prefix 2)
+  (corfu-max-width 60)
+  (corfu-popupinfo-mode t))
 
 ;; Snippets
 
