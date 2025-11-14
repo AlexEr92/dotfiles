@@ -17,17 +17,18 @@
 7. [Поиск и навигация](#поиск-и-навигация)
 8. [Quickfix & Location Lists](#quickfix--location-lists)
 9. [Hop Navigation](#hop-navigation)
-10. [Git операции](#git-операции)
-11. [Форматирование кода](#форматирование-кода)
-12. [Диагностика и терминал](#диагностика-и-терминал)
-13. [Git Signs](#git-signs)
-14. [LSP (Language Server Protocol)](#lsp-language-server-protocol)
-15. [DAP (Debugging)](#dap-debugging)
-16. [FzfLua (Fuzzy Finder)](#fzflua-fuzzy-finder)
-17. [Комментирование](#комментирование)
-18. [Tmux Navigation](#tmux-navigation)
-19. [Автодополнение (nvim-cmp)](#автодополнение-nvim-cmp)
-20. [Дополнительные mappings](#дополнительные-mappings)
+10. [Cscope Navigation](#cscope-navigation)
+11. [Git операции](#git-операции)
+12. [Форматирование кода](#форматирование-кода)
+13. [Диагностика и терминал](#диагностика-и-терминал)
+14. [Git Signs](#git-signs)
+15. [LSP (Language Server Protocol)](#lsp-language-server-protocol)
+16. [DAP (Debugging)](#dap-debugging)
+17. [FzfLua (Fuzzy Finder)](#fzflua-fuzzy-finder)
+18. [Комментирование](#комментирование)
+19. [Tmux Navigation](#tmux-navigation)
+20. [Автодополнение (nvim-cmp)](#автодополнение-nvim-cmp)
+21. [Дополнительные mappings](#дополнительные-mappings)
 
 ---
 
@@ -113,6 +114,28 @@
 |-----|----------|
 | `<leader><leader>w` | Переход к слову после курсора |
 | `<leader><leader>b` | Переход к слову перед курсором |
+
+---
+
+## Cscope Navigation
+
+Cscope — инструмент для навигации по коду в C/C++ проектах. Использует базу данных для быстрого поиска.
+
+**Команда для построения базы данных:** `:Cs db build`
+
+| Key | Описание |
+|-----|----------|
+| `<leader>csd` | Найти определение символа |
+| `<leader>csc` | Найти функции, вызывающие эту функцию |
+| `<leader>cse` | Найти по egrep паттерну |
+| `<leader>csf` | Найти этот файл |
+| `<leader>csi` | Найти файлы, включающие этот файл |
+| `<leader>cst` | Найти этот текст (строка) |
+| `<leader>csw` | Найти этот символ |
+| `<leader>csg` | Найти это определение |
+| `<leader>csr` | Найти все ссылки на этот символ |
+
+**Примечание:** Для работы cscope необходимо сначала построить базу данных командой `:Cs db build` в корне проекта.
 
 ---
 

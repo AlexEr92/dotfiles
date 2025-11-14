@@ -34,4 +34,28 @@ return {
 		"tpope/vim-unimpaired",
 		event = "VeryLazy", -- Load very late (mappings work automatically)
 	},
+
+	-- cscope_maps.nvim - Cscope integration for code navigation
+	-- Provides code navigation for C/C++ projects using cscope database
+	-- Key mappings are automatically created with prefix <leader>cs
+	-- Commands: :Cs db build (to build cscope database)
+	-- Features: find symbol definition, find functions calling a function, etc.
+	{
+		"dhananjaylatkar/cscope_maps.nvim",
+		cmd = "Cs", -- Load when :Cs command is used
+		dependencies = {
+			"folke/which-key.nvim", -- For key mapping hints
+			"ibhagwan/fzf-lua", -- For fuzzy finder (picker)
+		},
+		opts = {
+			prefix = "<leader>cs", -- Prefix for all cscope key mappings
+			cscope = {
+				picker = "fzf-lua", -- Use fzf-lua as picker
+				skip_picker_for_single_result = true, -- Jump directly if only one result
+			},
+		},
+		config = function(_, opts)
+			require("cscope_maps").setup(opts)
+		end,
+	},
 }
