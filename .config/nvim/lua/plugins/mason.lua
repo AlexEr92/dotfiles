@@ -2,9 +2,9 @@
 -- Package manager for LSP servers, DAP adapters, linters, and formatters
 return {
 	-- Mason.nvim - Core package manager
+	-- Loaded as dependency of mason-lspconfig (lazy = false)
 	{
 		"williamboman/mason.nvim",
-		lazy = false, -- Load immediately to ensure LSP servers are available
 		opts = {
 			ui = {
 				icons = {
@@ -36,13 +36,15 @@ return {
 	-- Automatically installs and configures LSP servers
 	{
 		"williamboman/mason-lspconfig.nvim",
+		lazy = false, -- Load immediately to ensure LSP servers are available
 		dependencies = {
 			"williamboman/mason.nvim",
+			-- nvim-lspconfig is required for automatic_enable functionality
+			"neovim/nvim-lspconfig",
 		},
 		config = function()
 			require("mason-lspconfig").setup({
 				-- LSP servers to ensure are installed
-				-- These should match the servers configured in lsp.lua
 				ensure_installed = {
 					"lua_ls", -- Lua language server
 					"clangd", -- C/C++ language server
@@ -52,6 +54,8 @@ return {
 					"gopls", -- Go language server
 					"bashls", -- Bash language server
 				},
+				-- Automatically enables all installed LSP servers
+				automatic_enable = true,
 			})
 		end,
 	},
