@@ -81,11 +81,5 @@ for _, provider in pairs(disabled_providers) do
 	g["loaded_" .. provider] = 0
 end
 
-local signs = { Error = " ", Warn = " ", Hint = "󰌵 ", Info = " " }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
 -- Disable vim diagnostics by default
 vim.diagnostic.disable()

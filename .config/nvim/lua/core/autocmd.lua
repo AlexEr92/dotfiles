@@ -101,7 +101,7 @@ autocmd({ "BufWinEnter", "WinEnter" }, {
 	callback = function()
 		local win = vim.api.nvim_get_current_win()
 		local win_id = vim.api.nvim_win_get_number(win)
-		
+
 		-- Clear existing match for this window if any
 		-- Use pcall to safely delete match (it may have been already deleted)
 		if match_ids[win_id] then
@@ -109,7 +109,7 @@ autocmd({ "BufWinEnter", "WinEnter" }, {
 			-- Clear from table regardless of success (match may have been auto-deleted)
 			match_ids[win_id] = nil
 		end
-		
+
 		-- Add new match
 		match_ids[win_id] = vim.fn.matchadd("ExtraWhitespace", "\\s\\+$")
 	end,
@@ -123,7 +123,6 @@ local show_diagnostics_on_hover = function()
 		local opts = {
 			focusable = false,
 			close_events = { "CursorMoved", "InsertEnter" },
-			border = "rounded",
 			source = "always",
 			prefix = " ",
 		}

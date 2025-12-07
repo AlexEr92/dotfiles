@@ -55,6 +55,8 @@ local function diagnostic_config()
 	-- Configure diagnostic display settings
 	vim.diagnostic.config({
 		virtual_text = false,      -- Don't show diagnostics inline
+		-- Diagnostic signs displayed in the gutter (sign column)
+		-- Icons shown next to lines with errors, warnings, info, or hints
 		signs = {
 			text = {
 				[severity.ERROR] = "󰅙",
@@ -63,7 +65,9 @@ local function diagnostic_config()
 				[severity.HINT] = "󰌵"
 			}
 		},
-		float = { border = "single" },
+		-- Floating window configuration for diagnostic messages
+		-- Shown when hovering over diagnostics or using :lua vim.diagnostic.open_float()
+		float = { border = "rounded" },
 		underline = true,         -- Underline errors in buffer
 		update_in_insert = false, -- Don't update diagnostics while typing
 	})
