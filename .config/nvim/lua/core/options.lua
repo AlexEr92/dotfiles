@@ -5,6 +5,7 @@ local opt = vim.opt
 -- Set leader key to space
 -- Must be set BEFORE lazy.nvim loads (for proper key binding resolution)
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -----------------------------------------------------------
 -- General

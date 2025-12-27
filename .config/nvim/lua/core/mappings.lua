@@ -253,7 +253,26 @@ local function setup_tmux_navigation()
 	map("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext, { desc = "Navigate next (tmux)" })
 end
 
--- Export function for use in other modules (e.g., lspconfig.lua, tmux.lua, git.lua, debugging.lua, comment.lua, fzflua.lua)
+--------------------------------------------------
+-- Grug-far Key Mappings
+--------------------------------------------------
+-- Setup grug-far keymaps
+-- Requires grug-far.nvim plugin to be loaded
+-- Called from grug-far.lua plugin config
+local function setup_grug_far_keymaps()
+	local status_ok, grug = pcall(require, "grug-far")
+	if not status_ok then
+		return
+	end
+
+	map({ "n", "x" }, "<leader>sr", function()
+		grug.open({
+			transient = true,
+		})
+	end, { desc = "Find and Replace (grug-far)" })
+end
+
+-- Export function for use in other modules (e.g., lspconfig.lua, tmux.lua, git.lua, debugging.lua, comment.lua, fzflua.lua, grug-far.lua)
 -- Return module with exported function to avoid polluting global namespace
 local mappings_module = {}
 mappings_module.setup_lsp_keymaps = setup_lsp_keymaps
@@ -262,4 +281,5 @@ mappings_module.setup_gitsigns_keymaps = setup_gitsigns_keymaps
 mappings_module.setup_dap_keymaps = setup_dap_keymaps
 mappings_module.setup_comment_keymaps = setup_comment_keymaps
 mappings_module.setup_fzflua_keymaps = setup_fzflua_keymaps
+mappings_module.setup_grug_far_keymaps = setup_grug_far_keymaps
 return mappings_module
