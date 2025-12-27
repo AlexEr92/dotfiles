@@ -2,32 +2,11 @@
 -- Provides advanced syntax highlighting and parsing using Tree-sitter
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPost", "BufNewFile" },
+	lazy = false,
 	build = ":TSUpdate",
 	config = function()
-		require("nvim-treesitter.configs").setup({
-			-- List of parsers to ensure are installed
-			ensure_installed = {
-				"bash",
-				"c",
-				"cpp",
-				"css",
-				"html",
-				"javascript",
-				"json",
-				"lua",
-				"python",
-				"rust",
-				"typescript",
-				"vim",
-				"vimdoc",
-				"yaml",
-			},
-			-- Install parsers synchronously (only applied to `ensure_installed`)
-			sync_install = false,
-			-- Automatically install missing parsers when entering buffer
-			auto_install = true,
-
+		require("nvim-treesitter.config").setup({
+			install_dir = vim.fn.stdpath("data") .. "/site",
 			-- Enable syntax highlighting
 			highlight = {
 				enable = true,
@@ -86,6 +65,23 @@ return {
 					enable = true,
 				},
 			},
+		})
+		-- Install parsers
+		require("nvim-treesitter").install({
+			"bash",
+			"c",
+			"cpp",
+			"css",
+			"html",
+			"javascript",
+			"json",
+			"lua",
+			"python",
+			"rust",
+			"typescript",
+			"vim",
+			"vimdoc",
+			"yaml",
 		})
 	end,
 }
