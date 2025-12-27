@@ -105,7 +105,7 @@ map({ "n", "v" }, "<leader>fm", "<cmd>Format<CR>", { desc = "Format code" })
 -- Toggle LSP diagnostics on/off
 map("n", "<leader>dt", function()
 	if vim.diagnostic.is_enabled() then
-		vim.diagnostic.disable()
+		vim.diagnostic.enable(false)
 		-- Close any floating diagnostic windows
 		for _, win in ipairs(vim.api.nvim_list_wins()) do
 			if vim.api.nvim_win_get_config(win).relative ~= "" then

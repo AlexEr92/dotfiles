@@ -83,4 +83,4 @@ for _, provider in pairs(disabled_providers) do
 end
 
 -- Disable vim diagnostics by default
-vim.diagnostic.disable()
+vim.diagnostic.enable(false)
