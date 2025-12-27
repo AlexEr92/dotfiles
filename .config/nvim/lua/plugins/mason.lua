@@ -48,7 +48,7 @@ return {
 				ensure_installed = {
 					"lua_ls", -- Lua language server
 					"clangd", -- C/C++ language server
-					"cmake", -- CMake language server
+					"neocmake", -- CMake language server
 					"rust_analyzer", -- Rust language server
 					"pyright", -- Python language server
 					"gopls", -- Go language server
