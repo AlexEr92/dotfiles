@@ -76,6 +76,7 @@ return {
 			"javascript",
 			"json",
 			"lua",
+			"markdown",
 			"python",
 			"rust",
 			"typescript",
