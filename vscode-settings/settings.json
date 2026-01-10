@@ -1,0 +1,21 @@
+{
+    "workbench.settings.useSplitJSON": true,
+    "workbench.activityBar.location": "top",
+    "telemetry.telemetryLevel": "off",
+    "telemetry.feedback.enabled": false,
+    "telemetry.editStats.enabled": false,
+    "editor.fontFamily": "'Hack Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
+    "editor.fontSize": 16,
+    "editor.mouseWheelZoom": true,
+    "editor.rulers": [
+        80
+    ],
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "terminal.integrated.fontSize": 16,
+    "chat.disableAIFeatures": true,
+    // Extension settings
+    "extensions.ignoreRecommendations": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "CodeSchool2 Minimal",
+}
