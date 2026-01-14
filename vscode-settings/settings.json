@@ -14,7 +14,7 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "terminal.integrated.fontSize": 16,
     "chat.disableAIFeatures": true,
-    // Extension settings
+    // Extensions settings
     "extensions.ignoreRecommendations": true,
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "CodeSchool2 Minimal",
