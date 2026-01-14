@@ -1,0 +1,20 @@
+{
+    "workbench.settings.useSplitJSON": true,
+    "window.commandCenter": true,
+    "crashReporting.enabled": "off",
+    "telemetry.feedback.enabled": false,
+    "editor.fontFamily": "'Hack Nerd Font', 'Cascadia Code', 'Droid Sans Mono'",
+    "editor.fontSize": 16,
+    "editor.mouseWheelZoom": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.rulers": [
+        80
+    ],
+    // Extensions settings
+    "extensions.ignoreRecommendations": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Tokyo Night Light",
+    "makefile.configureOnOpen": false,
+    "gitlens.telemetry.enabled": false,
+}

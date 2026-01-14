@@ -1,0 +1,17 @@
+anysphere.cpptools
+anysphere.cursorpyright
+eamodio.gitlens
+enkia.tokyo-night
+golang.go
+llvm-vs-code-extensions.vscode-clangd
+mermaidchart.vscode-mermaid-chart
+ms-python.debugpy
+ms-python.python
+ms-vscode.cmake-tools
+ms-vscode.makefile-tools
+pkief.material-icon-theme
+rust-lang.rust-analyzer
+shardulm94.trailing-spaces
+sumneko.lua
+vadimcn.vscode-lldb
+vscodevim.vim
